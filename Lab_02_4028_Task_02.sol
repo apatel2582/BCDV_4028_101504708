@@ -17,6 +17,7 @@ contract StudentMarks {
     uint public marks;
     address public studentAddress;
 
+    // DelegateCall, this function will use the function from the UpdaterContract but the storage context will still be this contract
     function updateMarksViaDelegateCall(address _updaterContract, uint _marks) public {
     // StudentMarks' storage is set, UpdaterContract is not modified.
         (bool success, ) = _updaterContract.delegatecall(
